@@ -47,7 +47,7 @@ const AstronomiaPage = () => {
           
           <div className="p-6">
             <h1 className="text-3xl font-bold text-indigo-700 mb-2">
-              {tituloTraducido?tituloTraducido:data.title}
+              {data.title}
             </h1>
             <p className="text-sm text-gray-500 mb-4">{data.date}</p>
 
