@@ -8,7 +8,6 @@ import {
 import Loader from "../globalComponents/Loader";
 import { ImgNasa } from "../modules/Astronomia/Components/ImgNasa";
 import EstrellaCard from "../modules/Astronomia/Components/EstrellaCard";
-import {traducirTextoAPI} from "../helpers/traductor"
 
 const AstronomiaPage = () => {
   const dispatch = useDispatch();
@@ -30,27 +29,8 @@ const AstronomiaPage = () => {
     dispatch(fetchStarData());
   }, [dispatch]);
 
-  const [tituloTraducido, setTituloTraducido] = useState("");
-  const [loadingTraslating, setLoadingTranslating] = useState(false);
 
 
-  useEffect(() => {
-    const traducir = async () => {
-      if (data.title) {
-        setLoadingTranslating(true);
-        try {
-          const traduccion = await traducirTextoAPI(data.title);
-          setTituloTraducido(traduccion);
-        } catch (error) {
-          setTituloTraducido(data.title); 
-        } finally {
-          setLoadingTranslating(false);
-        }
-      }
-    };
-
-    traducir();
-  }, [data]);
   if (loading || loadingNasa) return <Loader />;
   if (error || errorNasa) return <p className="text-red-500">Error: {error}</p>;
   if (!data || !dataNasa) return null;
