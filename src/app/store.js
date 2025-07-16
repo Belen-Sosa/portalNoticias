@@ -1,8 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './counterSlice'
+
+import newsReducer from '../modules/NoticiasGenerales/noticiasSlice'
+import astronomyReducer from '../modules/Astronomia/astronomiaSlice'
+import weatherReducer from '../modules/Clima/climaSlice'
+
 export const store = configureStore({
 reducer: {
-    counter: counterReducer // Aquí agregamos el reductor
-
+    news:  newsReducer,
+    astronomy: astronomyReducer,
+    weather: weatherReducer,
 }
 })
